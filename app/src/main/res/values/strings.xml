@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App name for English / default locale -->
+    <string name="app_name">NoFlashMemory - Disable 3-Finger Swipe</string>
+    <!-- Module description shown in LSPosed manager -->
+    <string name="xposed_description">Completely disable the annoying 3-finger swipe up "Flash Note" dialog on ColorOS, without affecting other gestures.</string>
+</resources>
