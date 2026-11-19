@@ -1,0 +1,21 @@
+# Gradle / Android 构建产物
+.gradle/
+local.properties
+build/
+app/build/
+*.iml
+.idea/
+
+# 签名密钥（切勿提交）
+*.jks
+*.keystore
+
+# 系统 / 编辑器杂项
+.DS_Store
+Thumbs.db
+*.log
+
+# apksigner v2 签名附属文件
+*.apk.idsig
+
+# 注意：NoFlashMemory.apk 予以保留，便于直接下载 / 上传 Release
