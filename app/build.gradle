@@ -1,0 +1,26 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'fun.lsdog.noflashmemory'
+    compileSdk 35
+
+    defaultConfig {
+        applicationId 'fun.lsdog.noflashmemory'
+        minSdk 30
+        targetSdk 35
+        versionCode 2
+        versionName '1.1'
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+}
+
+// Xposed API 仅在编译时需要，运行时由 LSPosed 框架提供，故 compileOnly
+dependencies {
+    compileOnly files('../libs/xposed-api.jar')
+}
