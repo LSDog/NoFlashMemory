@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 中文系统下的应用名 -->
+    <string name="app_name">禁用三指上滑一键闪记</string>
+    <!-- LSPosed 管理器中显示的模块描述 -->
+    <string name="xposed_description">彻底禁用 ColorOS 三指上滑弹出的「一键闪记」对话框，不影响其他手势。</string>
+</resources>
