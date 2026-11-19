@@ -1,11 +1,10 @@
-|   |   |
-| - | - |
-
 # 禁用ColorOS三指上滑一键闪记 | NoFlashMemory
 
 <img src="screenshots/vTRCzSMK9m.png" width="256">
 
 ## 简介！
+本仓库地址 https://github.com/LSDog/NoFlashMemory
+
 
 在 ColorOS 中存在**三指上滑启动“一键闪记”**&#x7684;快捷手势，然而即使在各种地方关闭一键闪记之后，三指上滑的手势仍会触发并显示一个烦人的对话框（见上图），而且系统没有提供任何关闭这个提示框的办法。
 
