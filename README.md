@@ -3,7 +3,7 @@
 
 # 禁用ColorOS三指上滑一键闪记 | NoFlashMemory
 
-![NO MORE 一键闪记](screenshots/vTRCzSMK9m.png)
+<img src="screenshots/vTRCzSMK9m.png" width="256">
 
 ## 简介！
 
