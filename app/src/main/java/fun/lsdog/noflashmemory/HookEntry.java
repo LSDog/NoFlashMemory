@@ -45,38 +45,42 @@ public final class HookEntry implements IXposedHookLoadPackage {
         XposedBridge.log(TAG + ": framework loaded, installing hooks");
 
         // 主拦截：三指上滑的专属触发入口
-        hookMethod(lpparam, "handleThreeSwipeUp",
-                int.class, int.class, Bundle.class);
-
-        // 双保险：闪记服务启动点（仅被 handleThreeSwipeUp 调用），
-        // 防止系统 OTA 后调用链发生变化时仍能弹出对话框
-        hookMethod(lpparam, "startColorDirectservice",
-                Bundle.class, boolean.class);
-    }
-
-    /**
-     * 在 before 阶段用 setResult(null) 直接结束目标方法：
-     * 原方法体不再执行，手势被静默吞掉，不产生任何闪记行为。
-     */
-    private static void hookMethod(XC_LoadPackage.LoadPackageParam lpparam,
-                                   final String methodName, Class<?>... parameterTypes) {
         try {
             XposedHelpers.findAndHookMethod(
                     CLASS_THREE_GESTURE,
                     lpparam.classLoader,
-                    methodName,
-                    parameterTypes,
+                    "handleThreeSwipeUp",
+                    int.class, int.class, Bundle.class,
                     new XC_MethodHook() {
                         @Override
                         protected void beforeHookedMethod(MethodHookParam param) {
                             param.setResult(null);
-                            XposedBridge.log(TAG + ": blocked " + methodName);
+                            XposedBridge.log(TAG + ": blocked handleThreeSwipeUp");
                         }
                     });
-            XposedBridge.log(TAG + ": hook " + methodName + " installed");
+            XposedBridge.log(TAG + ": hook handleThreeSwipeUp installed");
         } catch (Throwable t) {
-            // 单个 hook 失败不影响其他 hook，也不会导致系统不稳定
-            XposedBridge.log(TAG + ": hook " + methodName + " FAILED: " + t);
+            XposedBridge.log(TAG + ": hook handleThreeSwipeUp FAILED: " + t);
+        }
+
+        // 双保险：闪记服务启动点（仅被 handleThreeSwipeUp 调用），
+        // 防止系统 OTA 后调用链发生变化时仍能弹出对话框
+        try {
+            XposedHelpers.findAndHookMethod(
+                    CLASS_THREE_GESTURE,
+                    lpparam.classLoader,
+                    "startColorDirectservice",
+                    Bundle.class, boolean.class,
+                    new XC_MethodHook() {
+                        @Override
+                        protected void beforeHookedMethod(MethodHookParam param) {
+                            param.setResult(null);
+                            XposedBridge.log(TAG + ": blocked startColorDirectservice");
+                        }
+                    });
+            XposedBridge.log(TAG + ": hook startColorDirectservice installed");
+        } catch (Throwable t) {
+            XposedBridge.log(TAG + ": hook startColorDirectservice FAILED: " + t);
         }
     }
 }
